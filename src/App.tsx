@@ -1,16 +1,10 @@
-import Presentation from "./components/Presentational";
-import Container from "./components/Container";
+import DataDisplay from "./components/DataDisplay";
+import withLoading from "./components/WithLoading";
 
-const App: React.FC = () => {
-  const data = [{ name: "Item 1" }, { name: "Item 2" }];
+const DataDisplayWithLoading = withLoading(DataDisplay);
 
-  return (
-    <Container data={data}>
-      {(data) =>
-        data.map((item, index) => <Presentation key={index} item={item} />)
-      }
-    </Container>
-  );
-};
+const App: React.FC = () => (
+  <DataDisplayWithLoading isLoading={true} data="Hello, World!" />
+);
 
 export default App;
