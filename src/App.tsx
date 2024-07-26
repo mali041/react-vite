@@ -1,10 +1,19 @@
-import DataDisplay from "./components/DataDisplay";
-import withLoading from "./components/WithLoading";
+import DataProvider from "./components/DataProvider";
 
-const DataDisplayWithLoading = withLoading(DataDisplay);
+const App: React.FC = () => {
+  const data = ["Item 1", "Item 2", "Item 3"];
 
-const App: React.FC = () => (
-  <DataDisplayWithLoading isLoading={true} data="Hello, World!" />
-);
+  return (
+    <DataProvider data={data}>
+      {(data) =>
+        data.map((item, index) => (
+          <div key={index} className="item">
+            {item}
+          </div>
+        ))
+      }
+    </DataProvider>
+  );
+};
 
 export default App;
