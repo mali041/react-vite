@@ -1,16 +1,15 @@
-import React from "react";
-import Card from "./components/Card";
-import Welcome from "./components/Welcome";
-import "./App.css";
+import Presentation from "./components/Presentational";
+import Container from "./components/Container";
 
 const App: React.FC = () => {
+  const data = [{ name: "Item 1" }, { name: "Item 2" }];
+
   return (
-    <div className="App">
-      <Card title="Welcome Card">
-        <Welcome name="React Developer" />
-        <p>This is the content inside the card!</p>
-      </Card>
-    </div>
+    <Container data={data}>
+      {(data) =>
+        data.map((item, index) => <Presentation key={index} item={item} />)
+      }
+    </Container>
   );
 };
 
